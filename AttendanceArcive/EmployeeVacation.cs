@@ -19,5 +19,7 @@ namespace AttendanceArcive
         public DateTime EndDate { get; set; }
 
         public string Note { get; set; }
+
+        public bool IsExcuse { get; set; }
     }
 }

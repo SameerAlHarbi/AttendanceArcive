@@ -17,6 +17,16 @@ namespace AttendanceArcive
 
         public string EmployeeName { get; set; }
 
+        public bool WorkDay { get; set; }
+
+        public string ShiftName { get; set; }
+
+        public DateTime? ShiftStart { get; set; }
+
+        public DateTime? ShiftEnd { get; set; }
+
+        public TimeSpan? ShiftDurationTime { get; set; }
+
         public DateTime? CheckInDateTime { get; set; }
 
         public string CheckInDateTimeHijri => CheckInDateTime.HasValue ? CheckInDateTime.Value.ConvertToString(true, true, true) + "هـ " : "";
@@ -24,6 +34,14 @@ namespace AttendanceArcive
         public DateTime? CheckOutDateTime { get; set; }
 
         public string CheckOutDateTimeHijri => CheckOutDateTime.HasValue ? CheckOutDateTime.Value.ConvertToString(true, true, true) + "هـ " : "";
+
+        public TimeSpan? WorkDurationTime { get; set; }
+
+        public TimeSpan? CheckInLateDurationTime { get; set; }
+
+        public TimeSpan? CheckOutEarlyDurationTime { get; set; }
+
+        public TimeSpan? WasteDurationTime { get; set; }
 
         public bool IsVacation { get; set; }
 
@@ -36,5 +54,7 @@ namespace AttendanceArcive
         public string VacationDescription { get; set; }
 
         public string Note { get; set; }
+
+        public bool IsAbsent { get; set; }
     }
 }

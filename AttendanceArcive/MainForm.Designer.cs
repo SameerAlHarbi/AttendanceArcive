@@ -1,6 +1,6 @@
 ﻿namespace AttendanceArcive
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -39,26 +39,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tBL_EMPLOYEESDataGridView = new System.Windows.Forms.DataGridView();
             this.tBL_TRANSDUMPSDataGridView = new System.Windows.Forms.DataGridView();
-            this.employeeAttendanceRecordDataGridView = new System.Windows.Forms.DataGridView();
             this.employeeVacationDataGridView = new System.Windows.Forms.DataGridView();
             this.VacationTypeName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Note = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeIdDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.registerDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.startDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.endDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.noteDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.newVacationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnReport = new System.Windows.Forms.Button();
             this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeVacationBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.employeeAttendanceRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tBL_TRANSDUMPSBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -67,23 +56,31 @@
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tBL_EMPLOYEESBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.employeeAttendanceRecordBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.newVacationsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tBL_EMP_SHIFTBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tBL_EMP_SHIFTDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn16 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn17 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_EMPLOYEESDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_TRANSDUMPSDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeAttendanceRecordDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeVacationDataGridView)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newVacationsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeVacationBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeAttendanceRecordBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_TRANSDUMPSBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_EMPLOYEESBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeAttendanceRecordBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newVacationsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBL_EMP_SHIFTBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBL_EMP_SHIFTDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // dtTo
             // 
             this.dtTo.CustomFormat = "yyyy/MM/dd ddd";
             this.dtTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtTo.Location = new System.Drawing.Point(971, 15);
+            this.dtTo.Location = new System.Drawing.Point(827, 12);
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(148, 20);
             this.dtTo.TabIndex = 13;
@@ -92,7 +89,7 @@
             // 
             this.dtFrom.CustomFormat = "yyyy/MM/dd ddd";
             this.dtFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtFrom.Location = new System.Drawing.Point(724, 15);
+            this.dtFrom.Location = new System.Drawing.Point(615, 12);
             this.dtFrom.Name = "dtFrom";
             this.dtFrom.Size = new System.Drawing.Size(148, 20);
             this.dtFrom.TabIndex = 14;
@@ -101,7 +98,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label3.Location = new System.Drawing.Point(913, 19);
+            this.label3.Location = new System.Drawing.Point(769, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 11;
@@ -111,7 +108,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label2.Location = new System.Drawing.Point(654, 19);
+            this.label2.Location = new System.Drawing.Point(545, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 12;
@@ -119,7 +116,7 @@
             // 
             // btnGetRowAttendance
             // 
-            this.btnGetRowAttendance.Location = new System.Drawing.Point(1137, 14);
+            this.btnGetRowAttendance.Location = new System.Drawing.Point(981, 11);
             this.btnGetRowAttendance.Name = "btnGetRowAttendance";
             this.btnGetRowAttendance.Size = new System.Drawing.Size(160, 23);
             this.btnGetRowAttendance.TabIndex = 9;
@@ -129,7 +126,7 @@
             // 
             // btnGetIds
             // 
-            this.btnGetIds.Location = new System.Drawing.Point(488, 14);
+            this.btnGetIds.Location = new System.Drawing.Point(414, 11);
             this.btnGetIds.Name = "btnGetIds";
             this.btnGetIds.Size = new System.Drawing.Size(125, 23);
             this.btnGetIds.TabIndex = 10;
@@ -139,7 +136,7 @@
             // 
             // txtEmployeesCodes
             // 
-            this.txtEmployeesCodes.Location = new System.Drawing.Point(195, 15);
+            this.txtEmployeesCodes.Location = new System.Drawing.Point(121, 12);
             this.txtEmployeesCodes.Name = "txtEmployeesCodes";
             this.txtEmployeesCodes.Size = new System.Drawing.Size(287, 20);
             this.txtEmployeesCodes.TabIndex = 8;
@@ -148,7 +145,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label1.Location = new System.Drawing.Point(91, 19);
+            this.label1.Location = new System.Drawing.Point(17, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 13);
             this.label1.TabIndex = 7;
@@ -166,7 +163,7 @@
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4});
             this.tBL_EMPLOYEESDataGridView.DataSource = this.tBL_EMPLOYEESBindingSource;
-            this.tBL_EMPLOYEESDataGridView.Location = new System.Drawing.Point(71, 43);
+            this.tBL_EMPLOYEESDataGridView.Location = new System.Drawing.Point(20, 40);
             this.tBL_EMPLOYEESDataGridView.Name = "tBL_EMPLOYEESDataGridView";
             this.tBL_EMPLOYEESDataGridView.ReadOnly = true;
             this.tBL_EMPLOYEESDataGridView.Size = new System.Drawing.Size(519, 369);
@@ -182,27 +179,11 @@
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn6});
             this.tBL_TRANSDUMPSDataGridView.DataSource = this.tBL_TRANSDUMPSBindingSource;
-            this.tBL_TRANSDUMPSDataGridView.Location = new System.Drawing.Point(607, 43);
+            this.tBL_TRANSDUMPSDataGridView.Location = new System.Drawing.Point(548, 40);
             this.tBL_TRANSDUMPSDataGridView.Name = "tBL_TRANSDUMPSDataGridView";
             this.tBL_TRANSDUMPSDataGridView.ReadOnly = true;
-            this.tBL_TRANSDUMPSDataGridView.Size = new System.Drawing.Size(356, 369);
+            this.tBL_TRANSDUMPSDataGridView.Size = new System.Drawing.Size(314, 369);
             this.tBL_TRANSDUMPSDataGridView.TabIndex = 16;
-            // 
-            // employeeAttendanceRecordDataGridView
-            // 
-            this.employeeAttendanceRecordDataGridView.AllowUserToAddRows = false;
-            this.employeeAttendanceRecordDataGridView.AllowUserToDeleteRows = false;
-            this.employeeAttendanceRecordDataGridView.AutoGenerateColumns = false;
-            this.employeeAttendanceRecordDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.employeeAttendanceRecordDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn8});
-            this.employeeAttendanceRecordDataGridView.DataSource = this.employeeAttendanceRecordBindingSource;
-            this.employeeAttendanceRecordDataGridView.Location = new System.Drawing.Point(975, 43);
-            this.employeeAttendanceRecordDataGridView.Name = "employeeAttendanceRecordDataGridView";
-            this.employeeAttendanceRecordDataGridView.ReadOnly = true;
-            this.employeeAttendanceRecordDataGridView.Size = new System.Drawing.Size(345, 369);
-            this.employeeAttendanceRecordDataGridView.TabIndex = 17;
             // 
             // employeeVacationDataGridView
             // 
@@ -240,73 +221,15 @@
             this.Note.Name = "Note";
             this.Note.ReadOnly = true;
             // 
-            // dataGridView1
+            // btnReport
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AutoGenerateColumns = false;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.employeeIdDataGridViewTextBoxColumn,
-            this.registerDateDataGridViewTextBoxColumn,
-            this.dataGridViewTextBoxColumn15,
-            this.startDateDataGridViewTextBoxColumn,
-            this.endDateDataGridViewTextBoxColumn,
-            this.noteDataGridViewTextBoxColumn});
-            this.dataGridView1.DataSource = this.newVacationsBindingSource;
-            this.dataGridView1.Location = new System.Drawing.Point(71, 625);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.Size = new System.Drawing.Size(1249, 199);
-            this.dataGridView1.TabIndex = 18;
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            this.dataGridViewTextBoxColumn15.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn15.DataPropertyName = "VacationTypeName";
-            this.dataGridViewTextBoxColumn15.HeaderText = "VacationTypeName";
-            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            this.dataGridViewTextBoxColumn15.ReadOnly = true;
-            // 
-            // employeeIdDataGridViewTextBoxColumn
-            // 
-            this.employeeIdDataGridViewTextBoxColumn.DataPropertyName = "EmployeeId";
-            this.employeeIdDataGridViewTextBoxColumn.HeaderText = "EmployeeId";
-            this.employeeIdDataGridViewTextBoxColumn.Name = "employeeIdDataGridViewTextBoxColumn";
-            this.employeeIdDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // registerDateDataGridViewTextBoxColumn
-            // 
-            this.registerDateDataGridViewTextBoxColumn.DataPropertyName = "RegisterDate";
-            this.registerDateDataGridViewTextBoxColumn.HeaderText = "RegisterDate";
-            this.registerDateDataGridViewTextBoxColumn.Name = "registerDateDataGridViewTextBoxColumn";
-            this.registerDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // startDateDataGridViewTextBoxColumn
-            // 
-            this.startDateDataGridViewTextBoxColumn.DataPropertyName = "StartDate";
-            this.startDateDataGridViewTextBoxColumn.HeaderText = "StartDate";
-            this.startDateDataGridViewTextBoxColumn.Name = "startDateDataGridViewTextBoxColumn";
-            this.startDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // endDateDataGridViewTextBoxColumn
-            // 
-            this.endDateDataGridViewTextBoxColumn.DataPropertyName = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.HeaderText = "EndDate";
-            this.endDateDataGridViewTextBoxColumn.Name = "endDateDataGridViewTextBoxColumn";
-            this.endDateDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // noteDataGridViewTextBoxColumn
-            // 
-            this.noteDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.noteDataGridViewTextBoxColumn.DataPropertyName = "Note";
-            this.noteDataGridViewTextBoxColumn.HeaderText = "Note";
-            this.noteDataGridViewTextBoxColumn.Name = "noteDataGridViewTextBoxColumn";
-            this.noteDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // newVacationsBindingSource
-            // 
-            this.newVacationsBindingSource.DataSource = typeof(AttendanceArcive.EmployeeVacation);
+            this.btnReport.Location = new System.Drawing.Point(570, 835);
+            this.btnReport.Name = "btnReport";
+            this.btnReport.Size = new System.Drawing.Size(249, 34);
+            this.btnReport.TabIndex = 19;
+            this.btnReport.Text = "Show Report";
+            this.btnReport.UseVisualStyleBackColor = true;
+            this.btnReport.Click += new System.EventHandler(this.btnReport_Click);
             // 
             // dataGridViewTextBoxColumn9
             // 
@@ -342,25 +265,6 @@
             // employeeVacationBindingSource
             // 
             this.employeeVacationBindingSource.DataSource = typeof(AttendanceArcive.EmployeeVacation);
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "EmployeeId";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Employee Id";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn8.DataPropertyName = "TransactionDate";
-            this.dataGridViewTextBoxColumn8.HeaderText = "Transaction Date";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            // 
-            // employeeAttendanceRecordBindingSource
-            // 
-            this.employeeAttendanceRecordBindingSource.DataSource = typeof(AttendanceArcive.EmployeeAttendanceRecord);
             // 
             // dataGridViewTextBoxColumn7
             // 
@@ -414,14 +318,76 @@
             // 
             this.tBL_EMPLOYEESBindingSource.DataSource = typeof(AttendanceArcive.TBL_EMPLOYEES);
             // 
-            // Form1
+            // employeeAttendanceRecordBindingSource
+            // 
+            this.employeeAttendanceRecordBindingSource.DataSource = typeof(AttendanceArcive.EmployeeAttendanceRecord);
+            // 
+            // newVacationsBindingSource
+            // 
+            this.newVacationsBindingSource.DataSource = typeof(AttendanceArcive.EmployeeVacation);
+            // 
+            // tBL_EMP_SHIFTBindingSource
+            // 
+            this.tBL_EMP_SHIFTBindingSource.DataSource = typeof(AttendanceArcive.TBL_EMP_SHIFT);
+            // 
+            // tBL_EMP_SHIFTDataGridView
+            // 
+            this.tBL_EMP_SHIFTDataGridView.AllowUserToAddRows = false;
+            this.tBL_EMP_SHIFTDataGridView.AllowUserToDeleteRows = false;
+            this.tBL_EMP_SHIFTDataGridView.AutoGenerateColumns = false;
+            this.tBL_EMP_SHIFTDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.tBL_EMP_SHIFTDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn16,
+            this.dataGridViewTextBoxColumn17});
+            this.tBL_EMP_SHIFTDataGridView.DataSource = this.tBL_EMP_SHIFTBindingSource;
+            this.tBL_EMP_SHIFTDataGridView.Location = new System.Drawing.Point(868, 40);
+            this.tBL_EMP_SHIFTDataGridView.Name = "tBL_EMP_SHIFTDataGridView";
+            this.tBL_EMP_SHIFTDataGridView.ReadOnly = true;
+            this.tBL_EMP_SHIFTDataGridView.Size = new System.Drawing.Size(497, 369);
+            this.tBL_EMP_SHIFTDataGridView.TabIndex = 19;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "EPID";
+            this.dataGridViewTextBoxColumn8.HeaderText = "EPID";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn14.DataPropertyName = "ESNAME";
+            this.dataGridViewTextBoxColumn14.HeaderText = "ESNAME";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            this.dataGridViewTextBoxColumn14.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn16
+            // 
+            this.dataGridViewTextBoxColumn16.DataPropertyName = "ESSTART";
+            this.dataGridViewTextBoxColumn16.HeaderText = "ESSTART";
+            this.dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            this.dataGridViewTextBoxColumn16.ReadOnly = true;
+            this.dataGridViewTextBoxColumn16.Width = 130;
+            // 
+            // dataGridViewTextBoxColumn17
+            // 
+            this.dataGridViewTextBoxColumn17.DataPropertyName = "ESEND";
+            this.dataGridViewTextBoxColumn17.HeaderText = "ESEND";
+            this.dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
+            this.dataGridViewTextBoxColumn17.ReadOnly = true;
+            this.dataGridViewTextBoxColumn17.Width = 130;
+            // 
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1388, 1110);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(1388, 889);
+            this.Controls.Add(this.tBL_EMP_SHIFTDataGridView);
+            this.Controls.Add(this.btnReport);
             this.Controls.Add(this.employeeVacationDataGridView);
-            this.Controls.Add(this.employeeAttendanceRecordDataGridView);
             this.Controls.Add(this.tBL_TRANSDUMPSDataGridView);
             this.Controls.Add(this.tBL_EMPLOYEESDataGridView);
             this.Controls.Add(this.dtTo);
@@ -432,19 +398,19 @@
             this.Controls.Add(this.btnGetIds);
             this.Controls.Add(this.txtEmployeesCodes);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
+            this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.tBL_EMPLOYEESDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_TRANSDUMPSDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeAttendanceRecordDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeVacationDataGridView)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.newVacationsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeVacationBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.employeeAttendanceRecordBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_TRANSDUMPSBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tBL_EMPLOYEESBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.employeeAttendanceRecordBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.newVacationsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBL_EMP_SHIFTBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tBL_EMP_SHIFTDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -471,9 +437,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.BindingSource employeeAttendanceRecordBindingSource;
-        private System.Windows.Forms.DataGridView employeeAttendanceRecordDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.BindingSource employeeVacationBindingSource;
         private System.Windows.Forms.DataGridView employeeVacationDataGridView;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
@@ -483,13 +446,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private System.Windows.Forms.DataGridViewTextBoxColumn Note;
         private System.Windows.Forms.BindingSource newVacationsBindingSource;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn employeeIdDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn registerDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private System.Windows.Forms.DataGridViewTextBoxColumn startDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn endDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn noteDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnReport;
+        private System.Windows.Forms.BindingSource tBL_EMP_SHIFTBindingSource;
+        private System.Windows.Forms.DataGridView tBL_EMP_SHIFTDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
     }
 }
 

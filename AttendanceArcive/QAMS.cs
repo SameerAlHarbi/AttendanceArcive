@@ -14,11 +14,10 @@ namespace AttendanceArcive
 
         public virtual DbSet<TBL_DEPARTMENTS> TBL_DEPARTMENTS { get; set; }
         public virtual DbSet<TBL_EMP_DUTY> TBL_EMP_DUTY { get; set; }
+        public virtual DbSet<TBL_EMP_SHIFT> TBL_EMP_SHIFT { get; set; }
         public virtual DbSet<TBL_EMP_TRANS_DTL> TBL_EMP_TRANS_DTL { get; set; }
         public virtual DbSet<TBL_EMP_VACATION> TBL_EMP_VACATION { get; set; }
         public virtual DbSet<TBL_EMPLOYEES> TBL_EMPLOYEES { get; set; }
-        public virtual DbSet<TBL_EXCUSE_TYPE> TBL_EXCUSE_TYPE { get; set; }
-        public virtual DbSet<TBL_HOLIDAYS> TBL_HOLIDAYS { get; set; }
         public virtual DbSet<TBL_TRANSDUMPS> TBL_TRANSDUMPS { get; set; }
         public virtual DbSet<TBL_VAC_TYPE> TBL_VAC_TYPE { get; set; }
 
@@ -95,6 +94,83 @@ namespace AttendanceArcive
 
             modelBuilder.Entity<TBL_EMP_DUTY>()
                 .Property(e => e.EDCODE)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESID)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.EPID)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESCODE)
+                .IsFixedLength()
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESNAME)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESDESC)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESLENGTH)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESISNIGHT)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESALLOW_START)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESALLOW_END)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.SYS_USER)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.SYS_EDIT)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESALLOW_CROSS_PUNCH)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESMAX_BEFORE)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESMAX_AFTER)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESOT_BEFORE)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESOT_AFTER)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESCALC_GAPS)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESCALC_OT)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<TBL_EMP_SHIFT>()
+                .Property(e => e.ESGAPS_START)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<TBL_EMP_TRANS_DTL>()
@@ -399,56 +475,6 @@ namespace AttendanceArcive
 
             modelBuilder.Entity<TBL_EMPLOYEES>()
                 .Property(e => e.EP_NOTIFICATION)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<TBL_EXCUSE_TYPE>()
-                .Property(e => e.XTID)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<TBL_EXCUSE_TYPE>()
-                .Property(e => e.XTCODE)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TBL_EXCUSE_TYPE>()
-                .Property(e => e.XTNAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TBL_EXCUSE_TYPE>()
-                .Property(e => e.XTDESC)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TBL_EXCUSE_TYPE>()
-                .Property(e => e.SYS_USER)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<TBL_EXCUSE_TYPE>()
-                .Property(e => e.SYS_EDIT)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<TBL_HOLIDAYS>()
-                .Property(e => e.HOID)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<TBL_HOLIDAYS>()
-                .Property(e => e.HOCODE)
-                .IsFixedLength()
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TBL_HOLIDAYS>()
-                .Property(e => e.HONAME)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TBL_HOLIDAYS>()
-                .Property(e => e.HODESC)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TBL_HOLIDAYS>()
-                .Property(e => e.SYS_USER)
-                .HasPrecision(18, 0);
-
-            modelBuilder.Entity<TBL_HOLIDAYS>()
-                .Property(e => e.SYS_EDIT)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<TBL_TRANSDUMPS>()
