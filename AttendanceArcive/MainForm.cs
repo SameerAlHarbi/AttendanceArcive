@@ -21,11 +21,12 @@ namespace AttendanceArcive
         private List<TBL_TRANSDUMPS> allOldTransactionsRecords;
         private List<EmployeeVacation> allOldVacationsRecords;
         private List<TBL_EMP_SHIFT> allOldShiftsRecords;
+        private List<TBL_EMP_TRANS_MST> allShiftsHolidaies;
 
 
         //private List<EmployeeAttendanceRecord> newTransactionsRecords;
         //private List<EmployeeAttendanceRecord> allTransactionsRecords;
-        //private List<EmployeeVacation> newVacationsRecords;
+        private List<EmployeeVacation> newVacationsRecords;
         //private List<EmployeeVacation> allVacationsRecords;
 
         public MainForm()
@@ -38,10 +39,11 @@ namespace AttendanceArcive
             allOldTransactionsRecords = new List<TBL_TRANSDUMPS>();
             allOldVacationsRecords = new List<EmployeeVacation>();
             allOldShiftsRecords = new List<TBL_EMP_SHIFT>();
+            this.allShiftsHolidaies = new List<TBL_EMP_TRANS_MST>();
 
             //newTransactionsRecords = new List<EmployeeAttendanceRecord>();
             //allTransactionsRecords = new List<EmployeeAttendanceRecord>();           
-            //newVacationsRecords = new List<EmployeeVacation>();
+            newVacationsRecords = new List<EmployeeVacation>();
             //allVacationsRecords = new List<EmployeeVacation>();   
         }
 
@@ -58,6 +60,9 @@ namespace AttendanceArcive
 
             this.tBL_EMP_SHIFTBindingSource.DataSource = this.allOldShiftsRecords;
             this.tBL_EMP_SHIFTBindingSource.ResetBindings(false);
+
+            this.tBL_EMP_TRANS_MSTBindingSource.DataSource = this.allShiftsHolidaies;
+            this.tBL_EMP_TRANS_MSTBindingSource.ResetBindings(false);
 
             //this.employeeAttendanceRecordBindingSource.DataSource = this.newTransactionsRecords;
             //this.employeeAttendanceRecordBindingSource.ResetBindings(false);
@@ -157,9 +162,49 @@ namespace AttendanceArcive
                 this.allOldVacationsRecords.AddRange(dutiesVacations);
 
                 this.allOldShiftsRecords = await db.TBL_EMP_SHIFT
-                    .Where(sh => employeesIds.Contains(sh.EPID) 
+                    .Where(sh => employeesIds.Contains(sh.EPID)
                         && sh.ESSTART >= oldDataFromDate.Value && sh.ESSTART <= oldDataToDate)
                     .AsNoTracking().ToListAsync();
+
+                this.allShiftsHolidaies = await db.TBL_EMP_TRANS_MST
+                   .Where(h => employeesIds.Contains(h.EPID)
+                       && h.TMDATE >= oldDataFromDate.Value
+                       && h.TMDATE <= oldDataToDate
+                       && !string.IsNullOrEmpty(h.HOCODE))
+                   .AsNoTracking().ToListAsync();
+
+
+
+                if (oldDataToDate >= new DateTime(2016,1,1))
+                {
+                    try
+                    {
+                        var client = new HttpClient();
+                        client.BaseAddress = new Uri(uriString: @"http://172.16.11.44:810/HrPortalApi/api/Hr/portal/");
+                        client.DefaultRequestHeaders.Accept.Clear();
+                        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType: "application/json"));
+
+                        DateTime sapVacationsFromDate = oldDataFromDate.Value < new DateTime(2016, 1, 1) ? new DateTime(2016, 1, 1) : oldDataFromDate.Value;
+
+                        string vacationsRequestUrl = $"vacations?fromdate={oldDataFromDate.Value.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&todate={oldDataToDate.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&employeesIds={this.txtEmployeesCodes.Text}";
+
+                        HttpResponseMessage vacationsResponse = await client.GetAsync(vacationsRequestUrl);
+                        if (vacationsResponse.IsSuccessStatusCode)
+                        {
+                            string vacationsContent = await vacationsResponse.Content.ReadAsStringAsync();
+                            this.newVacationsRecords = JsonConvert.DeserializeObject<List<EmployeeVacation>>(vacationsContent);
+                        }
+
+                        if (this.newVacationsRecords.Count > 0)
+                        {
+                            this.allOldVacationsRecords.AddRange(newVacationsRecords);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    } 
+                }
             }
 
             //if (newDataToDate.HasValue)
@@ -171,46 +216,46 @@ namespace AttendanceArcive
             //        client.DefaultRequestHeaders.Accept.Clear();
             //        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(mediaType: "application/json"));
 
-            //        string recordsRequestUrl = $"RawAttendanceTransactions?fromdate={newDataFromDate.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&todate={newDataToDate.Value.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&employeesIds={this.txtEmployeesCodes.Text}";
+                //        string recordsRequestUrl = $"RawAttendanceTransactions?fromdate={newDataFromDate.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&todate={newDataToDate.Value.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&employeesIds={this.txtEmployeesCodes.Text}";
 
-            //        HttpResponseMessage recordsResponse = await client.GetAsync(recordsRequestUrl);
-            //        if (recordsResponse.IsSuccessStatusCode)
-            //        {
-            //            string content = await recordsResponse.Content.ReadAsStringAsync();
-            //            this.newTransactionsRecords = JsonConvert.DeserializeObject<List<EmployeeAttendanceRecord>>(content);
-            //        }
+                //        HttpResponseMessage recordsResponse = await client.GetAsync(recordsRequestUrl);
+                //        if (recordsResponse.IsSuccessStatusCode)
+                //        {
+                //            string content = await recordsResponse.Content.ReadAsStringAsync();
+                //            this.newTransactionsRecords = JsonConvert.DeserializeObject<List<EmployeeAttendanceRecord>>(content);
+                //        }
 
-            //        string vacationsRequestUrl = $"vacations?fromdate={newDataFromDate.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&todate={newDataToDate.Value.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&employeesIds={this.txtEmployeesCodes.Text}";
+                //        string vacationsRequestUrl = $"vacations?fromdate={newDataFromDate.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&todate={newDataToDate.Value.ToString("yyyy-MM-dd", new CultureInfo("en-US"))}&employeesIds={this.txtEmployeesCodes.Text}";
 
-            //        HttpResponseMessage vacationsResponse = await client.GetAsync(vacationsRequestUrl);
-            //        if (vacationsResponse.IsSuccessStatusCode)
-            //        {
-            //            string vacationsContent = await vacationsResponse.Content.ReadAsStringAsync();
-            //            this.newVacationsRecords = JsonConvert.DeserializeObject<List<EmployeeVacation>>(vacationsContent);
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            //}
+                //        HttpResponseMessage vacationsResponse = await client.GetAsync(vacationsRequestUrl);
+                //        if (vacationsResponse.IsSuccessStatusCode)
+                //        {
+                //            string vacationsContent = await vacationsResponse.Content.ReadAsStringAsync();
+                //            this.newVacationsRecords = JsonConvert.DeserializeObject<List<EmployeeVacation>>(vacationsContent);
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        MessageBox.Show(ex.Message);
+                //    }
+                //}
 
-            //this.allTransactionsRecords = this.oldTransactionsRecords.Select(t => new EmployeeAttendanceRecord
-            //{
-            //    EmployeeId = int.Parse(t.TREMP_ID),
-            //    TransactionDate = t.TRDATE
-            //}).ToList();
+                //this.allTransactionsRecords = this.oldTransactionsRecords.Select(t => new EmployeeAttendanceRecord
+                //{
+                //    EmployeeId = int.Parse(t.TREMP_ID),
+                //    TransactionDate = t.TRDATE
+                //}).ToList();
 
-            //this.allTransactionsRecords.AddRange(this.newTransactionsRecords);
+                //this.allTransactionsRecords.AddRange(this.newTransactionsRecords);
 
-            //this.allTransactionsRecords = this.allTransactionsRecords.OrderBy(t => t.EmployeeId).ThenBy(t => t.TransactionDate).ToList();
+                //this.allTransactionsRecords = this.allTransactionsRecords.OrderBy(t => t.EmployeeId).ThenBy(t => t.TransactionDate).ToList();
 
-            //this.allVacationsRecords.AddRange(this.oldVacationsRecords);
-            //this.allVacationsRecords.AddRange(this.newVacationsRecords);
+                //this.allVacationsRecords.AddRange(this.oldVacationsRecords);
+                //this.allVacationsRecords.AddRange(this.newVacationsRecords);
 
-            //this.allVacationsRecords = this.allVacationsRecords.OrderBy(v => v.EmployeeId).ThenBy(v => v.StartDate).ToList();
+                //this.allVacationsRecords = this.allVacationsRecords.OrderBy(v => v.EmployeeId).ThenBy(v => v.StartDate).ToList();
 
-            this.resetBindings();
+                this.resetBindings();
 
             this.Cursor = Cursors.Default;
         }
@@ -246,7 +291,8 @@ namespace AttendanceArcive
                         int employeeId = int.Parse(emp.EPCODE);
                         var employeeOldTransactionsRecords = this.allOldTransactionsRecords.Where(t => t.EPID == emp.EPID && t.TRDATE.Date == currentDate).OrderBy(t => t.TRDATE).ToList();
                         var employeeOldVacationsRecord = this.allOldVacationsRecords.FirstOrDefault(v => v.EmployeeId == employeeId && currentDate >= v.StartDate.Date && currentDate <= v.EndDate.Date);
-                        var employeeShiftsRecord = this.allOldShiftsRecords.FirstOrDefault(sh => sh.ESSTART.Date == currentDate);
+                        var employeeShiftsRecord = this.allOldShiftsRecords.FirstOrDefault(sh => sh.EPID == emp.EPID && sh.ESSTART.Date == currentDate);
+                        var employeeHolidayRecord = this.allShiftsHolidaies.FirstOrDefault(h => h.EPID == emp.EPID && h.TMDATE.Date == currentDate);
 
                         var checkin = employeeOldTransactionsRecords.FirstOrDefault()?.TRDATE ?? default(DateTime?);
                         var checkout = employeeOldTransactionsRecords
@@ -259,19 +305,20 @@ namespace AttendanceArcive
                             EmployeeName = emp.EPNAME,
                             CheckInDateTime = checkin,
                             CheckOutDateTime = checkout,
-                            IsVacation = employeeOldVacationsRecord != null,
-                            VacationTypeName = employeeOldVacationsRecord?.VacationTypeName ?? "",
+                            IsVacation = (employeeOldVacationsRecord != null || employeeHolidayRecord != null || employeeShiftsRecord == null),
+                            VacationTypeName = employeeOldVacationsRecord?.VacationTypeName ?? employeeHolidayRecord?.HONAME ?? "",
                             VacationRegisterDate = employeeOldVacationsRecord?.RegisterDate ?? default(DateTime?),
                             VacationDescription = employeeOldVacationsRecord?.Note ?? "",
-                            WorkDay = employeeShiftsRecord != null,
+                            WorkDay = (employeeShiftsRecord != null && employeeHolidayRecord == null),
                             ShiftName=employeeShiftsRecord?.ESNAME ?? "",
                             ShiftStart = employeeShiftsRecord?.ESSTART ?? default(DateTime?),
                             ShiftEnd = employeeShiftsRecord?.ESEND ?? default(DateTime?),
-                            IsAbsent = employeeShiftsRecord != null 
+                            IsAbsent = employeeShiftsRecord != null
+                                    && employeeHolidayRecord == null
                                     && employeeOldVacationsRecord == null
                                     && !checkin.HasValue && !checkout.HasValue,
                             ShiftDurationTime = employeeShiftsRecord != null ?
-                                employeeShiftsRecord.ESEND.Subtract(employeeShiftsRecord.ESSTART):default(TimeSpan?)       
+                                employeeShiftsRecord.ESEND.Subtract(employeeShiftsRecord.ESSTART):default(TimeSpan?)
                                
                         };
 
@@ -316,6 +363,11 @@ namespace AttendanceArcive
             }
 
             new ReportsForm(daysReports).ShowDialog();
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

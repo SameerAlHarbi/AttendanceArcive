@@ -39,9 +39,13 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="EPPlus, Version=4.5.3.2, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.3.2\lib\net40\EPPlus.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="Sameer.Shared, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Sameer.Shared.2.1.1\lib\netstandard2.0\Sameer.Shared.dll</HintPath>
     </Reference>
@@ -50,6 +54,7 @@
       <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Linq.Dynamic.Core, Version=1.0.9.2, Culture=neutral, PublicKeyToken=0f07ec44de6ac832, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.Dynamic.Core.1.0.9.2\lib\net46\System.Linq.Dynamic.Core.dll</HintPath>
@@ -95,7 +100,9 @@
     <Compile Include="TBL_EMP_DUTY.cs" />
     <Compile Include="TBL_EMP_SHIFT.cs" />
     <Compile Include="TBL_EMP_TRANS_DTL.cs" />
+    <Compile Include="TBL_EMP_TRANS_MST.cs" />
     <Compile Include="TBL_EMP_VACATION.cs" />
+    <Compile Include="TBL_HOLIDAYS.cs" />
     <Compile Include="TBL_TRANSDUMPS.cs" />
     <Compile Include="TBL_VAC_TYPE.cs" />
     <EmbeddedResource Include="MainForm.resx">
@@ -113,6 +120,7 @@
     <EmbeddedResource Include="ReportsForm.resx">
       <DependentUpon>ReportsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Details.xlsx" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\AttendanceDayReport.datasource" />
     <None Include="Properties\DataSources\EmployeeAttendanceRecord.datasource" />
@@ -122,6 +130,7 @@
     <None Include="Properties\DataSources\TBL_EMP_DUTY.datasource" />
     <None Include="Properties\DataSources\TBL_EMP_SHIFT.datasource" />
     <None Include="Properties\DataSources\TBL_EMP_TRANS_DTL.datasource" />
+    <None Include="Properties\DataSources\TBL_EMP_TRANS_MST.datasource" />
     <None Include="Properties\DataSources\TBL_EMP_VACATION.datasource" />
     <None Include="Properties\DataSources\TBL_TRANSDUMPS.datasource" />
     <None Include="Properties\DataSources\TBL_VAC_TYPE.datasource" />

@@ -39,6 +39,7 @@
             this.CheckOutEarlyDurationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.WasteDurationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.IsAbsent = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.WorkDurationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,7 +55,7 @@
             this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.attendanceDayReportBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.WorkDurationTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.attendanceDayReportDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.attendanceDayReportBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -104,6 +105,7 @@
             this.btnExportExcel.TabIndex = 2;
             this.btnExportExcel.Text = "Export Data Excel";
             this.btnExportExcel.UseVisualStyleBackColor = true;
+            this.btnExportExcel.Click += new System.EventHandler(this.btnExportExcel_Click);
             // 
             // WorkDay
             // 
@@ -161,6 +163,13 @@
             this.IsAbsent.Name = "IsAbsent";
             this.IsAbsent.ReadOnly = true;
             // 
+            // WorkDurationTime
+            // 
+            this.WorkDurationTime.DataPropertyName = "WorkDurationTime";
+            this.WorkDurationTime.HeaderText = "WorkDurationTime";
+            this.WorkDurationTime.Name = "WorkDurationTime";
+            this.WorkDurationTime.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "Date";
@@ -185,7 +194,6 @@
             // 
             // dataGridViewTextBoxColumn4
             // 
-            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn4.DataPropertyName = "EmployeeName";
             this.dataGridViewTextBoxColumn4.HeaderText = "EmployeeName";
             this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
@@ -262,7 +270,6 @@
             // 
             // dataGridViewTextBoxColumn13
             // 
-            this.dataGridViewTextBoxColumn13.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.dataGridViewTextBoxColumn13.DataPropertyName = "Note";
             this.dataGridViewTextBoxColumn13.HeaderText = "Note";
             this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
@@ -271,13 +278,6 @@
             // attendanceDayReportBindingSource
             // 
             this.attendanceDayReportBindingSource.DataSource = typeof(AttendanceArcive.AttendanceDayReport);
-            // 
-            // WorkDurationTime
-            // 
-            this.WorkDurationTime.DataPropertyName = "WorkDurationTime";
-            this.WorkDurationTime.HeaderText = "WorkDurationTime";
-            this.WorkDurationTime.Name = "WorkDurationTime";
-            this.WorkDurationTime.ReadOnly = true;
             // 
             // ReportsForm
             // 
@@ -325,5 +325,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn WasteDurationTime;
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsAbsent;
         private System.Windows.Forms.DataGridViewTextBoxColumn WorkDurationTime;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }

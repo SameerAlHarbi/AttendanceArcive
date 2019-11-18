@@ -155,5 +155,7 @@ namespace AttendanceArcive
 
         [Column(TypeName = "numeric")]
         public decimal? TDNOTIFY_DELAY { get; set; }
+
+        public virtual TBL_EMP_TRANS_MST TBL_EMP_TRANS_MST { get; set; }
     }
 }
